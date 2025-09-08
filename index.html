@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload Card Image</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader" class="loader-overlay" style="display: none;">
+  <div class="spinner"></div>
+  <p>Extracting data...</p>
+</div>
+
+<!-- Webcam Modal -->
+<div id="webcamModal" class="modal">
+  <div class="modal-content">
+    <video id="webcam" autoplay></video>
+    <br />
+    <button id="captureBtn">📸 Capture</button>
+    <button id="closeWebcam">❌ Close</button>
+  </div>
+</div>
+
+<!-- Decorative Background Shapes -->
+<div class="background-shapes">
+  <div class="shape shape1"></div>
+  <div class="shape shape2"></div>
+  <div class="shape shape3"></div>
+</div>
+
+<div class="container">
+  <div class="glass-card">
+    <h2>Upload Your Card Image</h2>
+    <p class="subtitle">Choose how you'd like to provide your card photo.</p>
+
+    <form>
+      <label class="button camera-btn">
+        <span class="icon">📷</span> Take Photo
+      </label>
+      <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;" />
+
+      <label for="uploadInput" class="button upload-btn">
+        <span class="icon">📁</span> Upload from Gallery
+      </label>
+      <input type="file" id="uploadInput" accept="image/*" multiple />
+
+      <div id="preview" class="preview"></div>
+      <div id="result" class="extracted-info"></div>
+    </form>
+
+    <!-- Download Excel Button -->
+    <a href="/download-excel" class="button download-btn" style="margin-top: 20px; text-align: center;">
+      ⬇️ Download Excel
+    </a>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
